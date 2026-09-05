@@ -1,0 +1,89 @@
+:root {
+  color: #f2f2f2;
+  background: #121212;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+body { min-width: 680px; margin: 0; background: #121212; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell { display: flex; flex-direction: column; height: 100vh; max-width: 800px; margin: 0 auto; padding: 10px; }
+.topbar, .vault-panel { border: 1px solid #363636; border-radius: 8px; background: #202020; }
+.topbar { display: flex; align-items: center; justify-content: space-between; min-height: 56px; padding: 8px 11px; }
+.brand-lockup, .topbar-actions, .secure-status, .vault-header, .vault-footer, .dialog-header, .dialog-actions { display: flex; align-items: center; }
+.brand-lockup { gap: 10px; }
+.app-icon { width: 32px; height: 32px; border-radius: 6px; image-rendering: auto; }
+.brand-lockup h1 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: -.015em; }
+.brand-lockup p, .eyebrow { margin: 2px 0 0; color: #9a9a9a; font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.topbar-actions { gap: 10px; }
+.secure-status { gap: 6px; color: #a9a9a9; font-size: 11px; }
+.secure-status i { width: 6px; height: 6px; border-radius: 50%; background: #00a2ff; box-shadow: 0 0 7px rgba(0, 162, 255, .8); }
+.primary-button, .secondary-button, .text-button, .copy-code-button, .icon-button, .edit-account-button, .delete-account-button, .secret-toggle-button { border: 0; transition: background 150ms ease, border-color 150ms ease, transform 150ms ease; }
+.primary-button { display: inline-flex; align-items: center; gap: 7px; padding: 8px 10px; border-radius: 5px; color: #fff; background: #00a2ff; font-size: 11px; font-weight: 600; }
+.primary-button:hover { background: #24b1ff; }
+.primary-button span { font-size: 17px; line-height: 12px; }
+
+.vault-panel { display: flex; flex: 1; flex-direction: column; min-height: 0; margin-top: 10px; padding: 20px; }
+.vault-header { justify-content: space-between; padding-bottom: 13px; border-bottom: 1px solid #363636; }
+.vault-header h2 { margin: 5px 0 0; font-size: 18px; font-weight: 500; letter-spacing: -.025em; }
+.account-count { padding: 5px 8px; border: 1px solid #464646; border-radius: 4px; color: #a9a9a9; font-size: 10px; }
+.accounts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 8px; margin-top: 14px; }
+.account-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 18px; min-height: 134px; padding: 14px; border: 1px solid #3c3c3c; border-radius: 6px; background: #292929; animation: appear 220ms both; animation-delay: calc(var(--card-index) * 55ms); }
+.account-card:hover { border-color: #00a2ff; background: #2d2d2d; transform: translateY(-1px); }
+.account-details { min-width: 0; }
+.account-issuer { margin: 2px 0 3px; color: #a7a7a7; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.account-card h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.account-label { margin: 4px 0 0; overflow: hidden; color: #8e8e8e; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.totp-panel { min-width: 102px; text-align: right; }
+.totp-caption, .totp-countdown { display: block; color: #8e8e8e; font-size: 9px; font-weight: 600; letter-spacing: .06em; }
+.totp-code { display: block; margin: 4px 0 3px; color: #f1f1f1; font-family: Consolas, "Cascadia Mono", monospace; font-size: 20px; letter-spacing: .08em; }
+.totp-countdown { color: #00a2ff; font-weight: 500; letter-spacing: 0; }
+.account-actions { display: flex; grid-column: 1 / -1; align-items: center; gap: 8px; padding-top: 10px; border-top: 1px solid #3b3b3b; }
+.copy-code-button { padding: 0; color: #e7e7e7; background: transparent; font-size: 11px; font-weight: 600; text-align: left; }
+.copy-code-button:hover { color: #00a2ff; }
+.copy-code-button:disabled { color: #777; cursor: not-allowed; }
+.edit-account-button, .delete-account-button { display: grid; width: 24px; height: 24px; place-items: center; border: 0; border-radius: 4px; color: #a0a0a0; background: transparent; }
+.edit-account-button { margin-left: auto; }
+.edit-account-button:hover { color: #8ed1ff; background: #15384d; }
+.delete-account-button:hover { color: #ff8f8f; background: #492828; }
+.edit-account-button svg, .delete-account-button svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+.empty-state { display: grid; flex: 1; place-content: center; min-height: 0; max-width: 370px; margin: auto; text-align: center; }
+.empty-state[hidden] { display: none; }
+.empty-icon { width: 40px; height: 40px; place-self: center; margin-bottom: 11px; border-radius: 7px; }
+.empty-state h3 { margin: 0 0 5px; font-size: 17px; font-weight: 600; }
+.empty-state p { margin: 0; color: #999; font-size: 12px; line-height: 1.55; }
+.text-button { margin: 15px auto 0; color: #00a2ff; background: transparent; font-size: 11px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.vault-footer { color: #727272; font-size: 9px; }
+
+.account-dialog { width: min(550px, calc(100vw - 32px)); padding: 0; border: 1px solid #4a4a4a; border-radius: 8px; color: #f0f0f0; background: #242424; box-shadow: 0 24px 70px rgba(0, 0, 0, .58); }
+.account-dialog::backdrop { background: rgba(0, 0, 0, .7); }
+.account-form { display: grid; gap: 15px; padding: 22px; }
+.dialog-header { justify-content: space-between; }
+.dialog-header h2 { margin: 5px 0 0; font-size: 22px; font-weight: 600; }
+.icon-button { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 5px; color: #d0d0d0; background: #363636; font-size: 20px; }
+.icon-button:hover, .secondary-button:hover { background: #414141; }
+.account-form label { display: grid; gap: 7px; color: #c5c5c5; font-size: 11px; font-weight: 600; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.account-form input { width: 100%; padding: 10px; border: 1px solid #484848; border-radius: 5px; outline: none; color: #f2f2f2; background: #181818; font-size: 12px; }
+.secret-input-wrap { position: relative; }
+.secret-input-wrap input { padding-right: 42px; }
+.secret-toggle-button { position: absolute; top: 50%; right: 6px; display: grid; width: 28px; height: 28px; place-items: center; border-radius: 4px; color: #a5a5a5; background: transparent; transform: translateY(-50%); }
+.secret-toggle-button:hover { color: #d8f1ff; background: #2c4655; }
+.secret-toggle-button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.account-form input:focus { border-color: #00a2ff; box-shadow: 0 0 0 2px rgba(0, 162, 255, .18); }
+.account-form small { color: #858585; font-size: 10px; font-weight: 400; line-height: 1.45; }
+.dialog-note { display: flex; gap: 8px; padding: 9px; border: 1px solid #28516b; border-radius: 5px; color: #a7d8f5; background: #182b36; }
+.dialog-note span { display: grid; width: 16px; height: 16px; flex: 0 0 auto; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 10px; font-weight: 700; }
+.dialog-note p { margin: 0; font-size: 10px; line-height: 1.5; }
+.dialog-actions { justify-content: flex-end; gap: 8px; margin-top: 2px; }
+.secondary-button { padding: 9px 11px; border-radius: 5px; color: #cacaca; background: #343434; font-size: 11px; }
+.toast { position: fixed; right: 20px; bottom: 20px; max-width: 350px; padding: 11px 13px; border: 1px solid #2c6f96; border-radius: 6px; color: #e3f4ff; background: #173346; box-shadow: 0 14px 34px rgba(0, 0, 0, .38); font-size: 11px; line-height: 1.45; opacity: 0; pointer-events: none; transform: translateY(10px); transition: 180ms ease; }
+.toast.is-visible { opacity: 1; transform: translateY(0); }
+@keyframes appear { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 760px) { body { min-width: 0; } .app-shell { padding: 8px; } .vault-panel { padding: 18px; } .secure-status { display: none; } .vault-header h2 { font-size: 17px; } }
