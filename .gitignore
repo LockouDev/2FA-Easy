@@ -21,6 +21,7 @@ dist-ssr
 *.pfx
 *.p12
 *.jks
+.keys/
 
 # User accounts and local application databases
 Accounts.json
@@ -31,6 +32,7 @@ accounts.json
 
 # Local packaging tools and release artifacts
 .tools/
+.tmp/
 src-tauri/target/
 src-tauri/gen/
 *.msi

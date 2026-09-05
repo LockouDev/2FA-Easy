@@ -1,3 +1,6 @@
+import { relaunch } from "@tauri-apps/plugin-process";
+import { check } from "@tauri-apps/plugin-updater";
+
 type Account = {
   id: string;
   displayName: string;
@@ -249,6 +252,20 @@ function CloseAccountDialog(): void {
   EditingAccountId = undefined;
 }
 
+async function CheckForUpdates(): Promise<void> {
+  if (import.meta.env.DEV) return;
+
+  try {
+    const Update = await check();
+    if (!Update) return;
+    ShowToast(`Atualizando para a versão ${Update.version}`);
+    await Update.downloadAndInstall();
+    await relaunch();
+  } catch {
+    // An unavailable update server must not prevent access to 2FA codes.
+  }
+}
+
 document.querySelector("#add-account-button")?.addEventListener("click", () => OpenAccountDialog());
 document.querySelector("#empty-add-account-button")?.addEventListener("click", () => OpenAccountDialog());
 document.querySelector("#close-dialog-button")?.addEventListener("click", CloseAccountDialog);
@@ -291,3 +308,4 @@ AccountForm?.addEventListener("submit", async (Event) => {
 AccountDialog?.addEventListener("click", (Event) => { if (Event.target === AccountDialog) CloseAccountDialog(); });
 RenderAccounts();
 window.setInterval(UpdateVisibleCodes, 1000);
+void CheckForUpdates();
