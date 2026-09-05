@@ -42,13 +42,6 @@ The current app supports the most common TOTP setup
 
 Download the latest Windows installer from the [Releases](../../releases) page when a release is available
 
-## Development
-
-```powershell
-bun install
-bun tauri dev
-```
-
 ## Important
 
 2FA Easy is an independent project and is not affiliated with 2FAS
