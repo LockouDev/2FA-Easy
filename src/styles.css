@@ -85,5 +85,11 @@ button { cursor: pointer; }
 .secondary-button { padding: 9px 11px; border-radius: 5px; color: #cacaca; background: #343434; font-size: 11px; }
 .toast { position: fixed; right: 20px; bottom: 20px; max-width: 350px; padding: 11px 13px; border: 1px solid #2c6f96; border-radius: 6px; color: #e3f4ff; background: #173346; box-shadow: 0 14px 34px rgba(0, 0, 0, .38); font-size: 11px; line-height: 1.45; opacity: 0; pointer-events: none; transform: translateY(10px); transition: 180ms ease; }
 .toast.is-visible { opacity: 1; transform: translateY(0); }
+.is-rtl .brand-lockup, .is-rtl .topbar-actions, .is-rtl .vault-header, .is-rtl .account-actions, .is-rtl .dialog-header, .is-rtl .dialog-actions { direction: rtl; }
+.is-rtl .totp-panel { text-align: left; direction: ltr; }
+.is-rtl .copy-code-button { text-align: right; }
+.is-rtl .edit-account-button { margin-right: auto; margin-left: 0; }
+.is-rtl .secret-input-wrap input { padding-right: 10px; padding-left: 42px; direction: ltr; }
+.is-rtl .secret-toggle-button { right: auto; left: 6px; }
 @keyframes appear { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 760px) { body { min-width: 0; } .app-shell { padding: 8px; } .vault-panel { padding: 18px; } .secure-status { display: none; } .vault-header h2 { font-size: 17px; } }

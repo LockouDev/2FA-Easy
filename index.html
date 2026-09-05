@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,53 +13,41 @@
       <header class="topbar">
         <div class="brand-lockup">
           <img class="app-icon" src="/src/assets/2FAIcone.ico" alt="" />
-          <div>
-            <h1>2FA Easy</h1>
-            <p>Autenticador local</p>
-          </div>
+          <div><h1>2FA Easy</h1><p data-i18n="localAuthenticator">Local authenticator</p></div>
         </div>
-
-        <div class="topbar-actions">
-          <button class="primary-button" id="add-account-button" type="button"><span aria-hidden="true">+</span> Nova conta</button>
-        </div>
+        <div class="topbar-actions"><button class="primary-button" id="add-account-button" type="button"><span aria-hidden="true">+</span> <span data-i18n="newAccount">New account</span></button></div>
       </header>
 
       <section class="vault-panel">
         <header class="vault-header">
-          <div>
-            <p class="eyebrow">CONTAS CONFIGURADAS</p>
-            <h2>Escolha uma conta para copiar o código</h2>
-          </div>
-          <span class="account-count" id="account-count">0 contas</span>
+          <div><p class="eyebrow" data-i18n="configuredAccounts">CONFIGURED ACCOUNTS</p><h2 data-i18n="chooseAccount">Choose an account to copy the code</h2></div>
+          <span class="account-count" id="account-count">0 accounts</span>
         </header>
-
         <div class="accounts-grid" id="accounts-grid" aria-live="polite"></div>
-
         <section class="empty-state" id="empty-state">
           <img class="empty-icon" src="/src/assets/2FAIcone.ico" alt="" />
-          <h3>Nenhuma conta adicionada</h3>
-          <p>Cadastre uma chave TOTP para gerar e copiar seus códigos daqui</p>
-          <button class="text-button" id="empty-add-account-button" type="button">Adicionar primeira conta</button>
+          <h3 data-i18n="noAccounts">No accounts added</h3>
+          <p data-i18n="emptyDescription">Add a TOTP key to generate and copy your codes here</p>
+          <button class="text-button" id="empty-add-account-button" type="button" data-i18n="addFirstAccount">Add first account</button>
         </section>
-
-        <footer class="vault-footer">Os códigos expiram a cada 30 segundos</footer>
+        <footer class="vault-footer" data-i18n="codesExpire">Codes expire every 30 seconds</footer>
       </section>
     </main>
 
     <dialog class="account-dialog" id="account-dialog">
       <form class="account-form" id="account-form">
         <div class="dialog-header">
-          <div><p class="eyebrow" id="dialog-eyebrow">NOVA CONTA</p><h2 id="dialog-title">Adicionar ao cofre</h2></div>
-          <button class="icon-button" id="close-dialog-button" type="button" aria-label="Fechar">×</button>
+          <div><p class="eyebrow" id="dialog-eyebrow">NEW ACCOUNT</p><h2 id="dialog-title">Add to vault</h2></div>
+          <button class="icon-button" id="close-dialog-button" type="button" data-i18n-aria="close" aria-label="Close">×</button>
         </div>
-        <label>Nome visível<input id="display-name-input" name="displayName" placeholder="Ex.: Oracle - Principal" required /></label>
+        <label><span data-i18n="visibleName">Display name</span><input id="display-name-input" name="displayName" data-i18n-placeholder="namePlaceholder" placeholder="E.g. Oracle - Main" required /></label>
         <div class="form-row">
-          <label>Serviço<input id="issuer-input" name="issuer" placeholder="Ex.: Oracle" required /></label>
-          <label>Usuário ou e-mail<input id="label-input" name="label" placeholder="Ex.: nome@email.com" required /></label>
+          <label><span data-i18n="service">Service</span><input id="issuer-input" name="issuer" data-i18n-placeholder="servicePlaceholder" placeholder="E.g. Oracle" required /></label>
+          <label><span data-i18n="userOrEmail">User or email</span><input id="label-input" name="label" data-i18n-placeholder="emailPlaceholder" placeholder="E.g. name@email.com" required /></label>
         </div>
-        <label>Secret TOTP Base32<span class="secret-input-wrap"><input id="secret-input" name="secret" type="password" placeholder="Cole sua chave manual aqui" autocomplete="off" required /><button class="secret-toggle-button" id="toggle-secret-button" type="button" aria-label="Mostrar chave secreta" title="Mostrar chave secreta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" /><circle cx="12" cy="12" r="2.8" /></svg></button></span><small>Você encontra essa chave em “manual entry key”, “setup key” ou “secret key”</small></label>
-        <div class="dialog-note"><span aria-hidden="true">i</span><p>Para esta versão de teste, a conta é salva localmente neste computador</p></div>
-        <div class="dialog-actions"><button class="secondary-button" id="cancel-dialog-button" type="button">Cancelar</button><button class="primary-button" id="save-account-button" type="submit">Salvar conta</button></div>
+        <label><span data-i18n="secretKey">TOTP Base32 secret key</span><span class="secret-input-wrap"><input id="secret-input" name="secret" type="password" data-i18n-placeholder="secretPlaceholder" placeholder="Paste your manual key here" autocomplete="off" required /><button class="secret-toggle-button" id="toggle-secret-button" type="button" data-i18n-aria="showSecret" aria-label="Show secret key" title="Show secret key"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" /><circle cx="12" cy="12" r="2.8" /></svg></button></span><small data-i18n="secretHelp">You can find it as "manual entry key", "setup key" or "secret key"</small></label>
+        <div class="dialog-note"><span aria-hidden="true">i</span><p data-i18n="localStorageNote">For this test version, the account is saved locally on this computer</p></div>
+        <div class="dialog-actions"><button class="secondary-button" id="cancel-dialog-button" type="button" data-i18n="cancel">Cancel</button><button class="primary-button" id="save-account-button" type="submit">Save account</button></div>
       </form>
     </dialog>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
