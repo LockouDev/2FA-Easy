@@ -8,7 +8,7 @@ Add your accounts, see the current code, copy it with one click and keep moving 
 
 2FA Easy needs the secret key behind a TOTP account
 
-We recommend using [2FAS Auth](https://2fas.com/) because it lets you view the Secret Key for a saved service from its edit screen
+We recommend using [2FAS Auth](https://2fas.com/auth/) because it lets you view the Secret Key for a saved service from its edit screen
 
 ## Add an account
 
